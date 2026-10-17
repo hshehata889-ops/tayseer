@@ -46,7 +46,6 @@
             padding: 0 20px;
         }
 
-        /* Top Notification */
         .top-bar {
             background: var(--primary-dark);
             color: #fff;
@@ -60,10 +59,18 @@
             font-weight: 700;
         }
 
-        /* Hero Section */
+        /* Hero & Logo */
         .hero {
-            padding: 40px 0 30px;
+            padding: 25px 0 30px;
             text-align: center;
+        }
+        .logo-wrap {
+            margin-bottom: 20px;
+        }
+        .logo-wrap img {
+            max-width: 220px;
+            height: auto;
+            display: inline-block;
         }
         .badge {
             display: inline-flex;
@@ -76,7 +83,7 @@
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
         .hero h1 {
             font-size: 2.1rem;
@@ -95,7 +102,7 @@
             margin: 0 auto 28px;
         }
 
-        /* Video / Mockup Card */
+        /* Mockup Card */
         .preview-box {
             background: var(--surface);
             border: 2px solid var(--border);
@@ -103,7 +110,6 @@
             padding: 24px;
             box-shadow: var(--shadow);
             margin-bottom: 30px;
-            position: relative;
         }
         .preview-tag {
             display: grid;
@@ -186,7 +192,7 @@
             font-weight: 500;
         }
 
-        /* Features Cards */
+        /* Features */
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -226,7 +232,7 @@
             color: var(--text-muted);
         }
 
-        /* Offers Section */
+        /* Pricing */
         .pricing-box {
             background: var(--surface);
             border: 2px solid var(--gold);
@@ -361,6 +367,7 @@
             .hero h1 { font-size: 1.7rem; }
             .preview-tag { grid-template-columns: 1fr; }
             .btn-cta { font-size: 1.15rem; padding: 16px 20px; }
+            .logo-wrap img { max-width: 180px; }
         }
     </style>
 </head>
@@ -374,8 +381,18 @@
         
         <!-- Hero Section -->
         <header class="hero">
+            <div class="logo-wrap">
+                <img src="logo.png" alt="شعار أكاديمية تيسير سمارت لعلوم القرآن أونلاين">
+                <div style="margin-top: 10px;">
+                    <h2 style="font-size: 1.45rem; font-weight: 900; color: #155e42; margin-bottom: 6px;">
+                        الجدول الذكي لحفظ ومراجعة القرآن الكريم
+                    </h2>
+                    <div style="width: 80px; height: 3px; background: #d4a340; margin: 0 auto; border-radius: 2px;"></div>
+                </div>
+            </div>
+
             <div class="badge">✨ نظام رقمي ذكي - يعمل مباشرة من متصفح هاتفك</div>
-            <h1>جدولك الذكي لحفظ القرآن الكريم ومراجعته.. <span>بدون تراكم أو تشتت</span></h1>
+            <h1>نظّم حفظك ومراجعتك للقرآن الكريم.. <span>بدون تراكم أو تشتت</span></h1>
             <p>أداة ذكية مرنة تُرتب وردك، وترحّل تلقائياً ما يفوتك لليوم التالي، وتمنحك رؤية واقعية متكاملة لختمتك خطوة بخطوة.</p>
 
             <div class="preview-box">
@@ -394,8 +411,7 @@
                 </div>
             </div>
 
-            <!-- ضع رقم واتسابك هنا بدلاً من 201000000000 -->
-            <a href="https://wa.me/201000000000?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AD%D8%B5%D9%88%D9%84%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%AC%D8%AF%D9%88%D9%84%20%D8%A7%D9%84%D8%B0%D9%83%D9%8A%20%D9%84%D8%AD%D9%81%D8%B8%20%D9%88%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D8%A7%D9%84%D9%82%D8%B1%D8%A2%D9%86%20(%D8%B9%D8%B1%D8%B6%20150%20%D8%AC%D9%86%D9%8A%D9%87)" class="btn-cta">
+            <a href="https://wa.me/201039794581?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AD%D8%B5%D9%88%D9%84%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%AC%D8%AF%D9%88%D9%84%20%D8%A7%D9%84%D8%B0%D9%83%D9%8A%20%D9%84%D8%AD%D9%81%D8%B8%20%D9%88%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D8%A7%D9%84%D9%82%D8%B1%D8%A2%D9%86%20(%D8%B9%D8%B1%D8%B6%20150%20%D8%AC%D9%86%D9%8A%D9%87)" class="btn-cta">
                 <span>احجز نسختك الآن عبر واتساب</span>
                 <span>←</span>
             </a>
@@ -419,16 +435,102 @@
             </div>
         </section>
 
-        <!-- Solution & Features -->
+        <!-- Features Section -->
         <section>
             <h2 class="section-title">كيف يحل الجدول الذكي هذه المعضلة؟</h2>
             <div class="feature-grid">
                 <div class="f-card">
                     <div class="f-icon">🔄</div>
                     <h3>ترحيل تلقائي للمتأخرات</h3>
-                    <p>إذا فاتك ورد اليوم لأي ظرف، لا تقلق ولا تبتئس؛ النظام يرحّل الصفحات غير المنجزة تلقائياً للأيام اللاحقة ليظل جدولك منضبطاً.</p>
+                    <p>إذا فاتك ورد اليوم لأي ظرف، النظام يرحّل الصفحات غير المنجزة تلقائياً للأيام اللاحقة ليظل جدولك منضبطاً دون قلق.</p>
                 </div>
                 <div class="f-card">
                     <div class="f-icon">⚖️</div>
                     <h3>فحص واقعية الخطة</h3>
-                    <p>يحسب لك النظام تلقائياً
+                    <p>يحسب لك النظام سعتك مقارنة بـ (604 صفحة)، وينبهك فوراً إن كانت خطتك بحاجة لتعديل لضمان الالتزام.</p>
+                </div>
+                <div class="f-card">
+                    <div class="f-icon">📱</div>
+                    <h3>يعمل بالكامل من متصفح هاتفك</h3>
+                    <p>لا تحتاج لتحميل تطبيقات ثقيلة؛ يفتح على متصفحك مباشرة ويحفظ إنجازك تلقائياً وبسرية تامة داخل جهازك.</p>
+                </div>
+                <div class="f-card">
+                    <div class="f-icon">🛡️</div>
+                    <h3>نسخ احتياطي فوري</h3>
+                    <p>إمكانية نسخ بياناتك بكود رقمي واسترجاعها بضغطة زر واحدة لتجنب فقدان تقدمك وملاحظاتك عند تغيير الهاتف.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing-box">
+            <div class="pricing-tag">عرض الإطلاق لفترة محدودة</div>
+            <div class="price-now">150 <small>جنيه مصري فقط</small></div>
+            <div class="price-old">بدلاً من 300 جنيه</div>
+            
+            <ul class="included-list">
+                <li>نسخة كاملة من <b>مخطط ختم القرآن (حفظ ومراجعة)</b> مدى الحياة.</li>
+                <li>نسخة كاملة من <b>مخطط مراجعة القرآن كاملاً</b> (خاص بالحَفَظة).</li>
+                <li>كود تفعيل رسمي خاص بجهازك لحماية واستقرار نسختك.</li>
+                <li>دليل إرشادي وفيديو قصير وسريع يوضح كيفية الاستخدام في دقيقتين.</li>
+                <li>دعم فني وتواصل شخصي عبر واتساب.</li>
+            </ul>
+
+            <a href="https://wa.me/201039794581?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AD%D8%B5%D9%88%D9%84%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%AC%D8%AF%D9%88%D9%84%20%D8%A7%D9%84%D8%B0%D9%83%D9%8A%20%D9%84%D8%AD%D9%81%D8%B8%20%D9%88%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D8%A7%D9%84%D9%82%D8%B1%D8%A2%D9%86%20(%D8%B9%D8%B1%D8%B6%20150%20%D8%AC%D9%86%D9%8A%D9%87)" class="btn-cta">
+                <span>اطلب العرض الآن (150 ج.م)</span>
+                <span>←</span>
+            </a>
+            <div class="cta-sub">الدفع متاح عبر: فودافون كاش / إنستا باي (InstaPay) / المحافظ الإلكترونية</div>
+        </section>
+
+        <!-- Steps Section -->
+        <section>
+            <h2 class="section-title">كيف تبدأ في 3 خطوات بسيطة؟</h2>
+            <div class="step">
+                <div class="step-num">1</div>
+                <div><b>اطلب نسختك:</b> اضغط على الزر وتواصل معنا عبر واتساب وسيتم تزويدك برقم التحويل وتفاصيل الطلب فوراً.</div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div><b>استلم الملفات:</b> افتح الملف على هاتفك وانسخ «رمز جهازك»، وسنرسل لك كود التفعيل الفوري.</div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div><b>حدد خطتك وانطلق:</b> اختر مدتك، وحدد ما حفظته سابقاً، وابدأ أول يوم بإتقان وسكينة!</div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section style="margin-top: 40px;">
+            <h2 class="section-title">الأسئلة الشائعة</h2>
+            
+            <details class="faq-item">
+                <summary>هل يعمل الجدول على أجهزة آيفون وأندرويد؟</summary>
+                <p>نعم، الملفات مصممة بصيغة تفاعلية فائقة الخفة وتعمل على متصفحات الهواتف الذكية مثل Google Chrome و Safari على أي هاتف أندرويد أو آيفون أو تابلت وكمبيوتر.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>ماذا يحدث إذا فاتني ورد الحفظ ليوم أو أكثر؟</summary>
+                <p>هذه هي الميزة الجوهرية للجدول الذكي! لا تحتاج لإعادة مسح الجدول أو كتابته من جديد؛ فالأداة تكتشف المتأخرات تلقائياً وتقوم بترحيلها للأيام التالية مع تخصيص قسم للمتأخرات لتعويضها متى شئت.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>هل أحتاج لدفع اشتراك شهري؟</summary>
+                <p>لا، الدفع لمرة واحدة فقط (150 ج.م) وتمتلك نسختك للأبد دون أي اشتراكات متجددة.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>هل تضيع بياناتي إذا أغلقت الصفحة؟</summary>
+                <p>إطلاقاً، النظام يحفظ بياناتك تلقائياً داخل ذاكرة متصفح جهازك. بالإضافة إلى وجود خيار لنسخ كود احتياطي متى أردت لتأمينه في ملاحظاتك الشخصية.</p>
+            </details>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © أكاديمية تيسير سمارت لعلوم القرآن أونلاين</p>
+        <p style="margin-top: 6px; font-size: 0.78rem;">أداة تنظيمية ذكية للمساعدة على الاستمرار في الحفظ والمراجعة</p>
+    </footer>
+
+</body>
+</html>
