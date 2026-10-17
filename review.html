@@ -27,6 +27,7 @@ td input[type=checkbox]{width:20px;height:20px}td input.n{width:100%;min-width:9
 .msg{padding:8px 10px;border-radius:8px;margin:6px 0;background:var(--ok)}.msg.w2{background:var(--late)}
 .m{display:flex;gap:8px;align-items:center;padding:4px 0;border-bottom:1px solid var(--bd)}
 textarea{width:100%;height:90px;direction:ltr;box-sizing:border-box}small{color:var(--mu)}
+body.lock main{display:none}#gate{position:fixed;inset:0;background:var(--bg);z-index:99;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}#gd{font-size:1.6rem;font-weight:700;letter-spacing:3px;direction:ltr;margin:10px 0}
 </style>
 </head>
 <body>
@@ -60,6 +61,25 @@ textarea{width:100%;height:90px;direction:ltr;box-sizing:border-box}small{color:
 <div class="nav"><button id="ex">إنشاء كود النسخة</button><button id="im">استرجاع من الكود</button></div><div id="bm"></div>
 </section>
 </main>
+
+<div id="gate"><div class="card" style="max-width:420px;width:100%;text-align:center"><h2>تفعيل الأداة</h2><p id="gm">أرسل «رمز جهازك» إلى البائع على واتساب (01039794581)، ثم أدخل كود التفعيل الذي يصلك.</p><div id="gd"></div><input id="gc" placeholder="كود التفعيل" style="width:100%;box-sizing:border-box;margin:10px 0;direction:ltr;text-align:center"><button id="gb">تفعيل</button><div id="ge" style="color:var(--bad);margin-top:8px"></div></div></div>
+
+<script>
+(function(){var P="moragaa",SEC="Kq7vX2mP9dR4tZ8w",A="ABCDEFGHJKLMNPQRSTUVWXYZ23456789",K="kh-dev",KA="kh-act-"+P;
+function h(s){var a=0xdeadbeef,b=0x41c6ce57,i,c;for(i=0;i<s.length;i++){c=s.charCodeAt(i);a=Math.imul(a^c,2654435761);b=Math.imul(b^c,1597334677)}a=Math.imul(a^(a>>>16),2246822507)^Math.imul(b^(b>>>13),3266489909);b=Math.imul(b^(b>>>16),2246822507)^Math.imul(a^(a>>>13),3266489909);return((a>>>0).toString(36).padStart(7,"0")+(b>>>0).toString(36).padStart(7,"0")).slice(0,10).split("").map(function(x){return A[parseInt(x,36)%32]}).join("")}
+function gen(){var u=new Uint8Array(8);crypto.getRandomValues(u);return Array.from(u,function(x){return A[x%32]}).join("")}
+function nz(s){return s.toUpperCase().replace(/[^A-Z0-9]/g,"")}
+var g=document.getElementById("gate"),dev=null,ok=false;
+try{dev=localStorage.getItem(K);if(!dev){dev=gen();localStorage.setItem(K,dev)}ok=localStorage.getItem(KA)===h(SEC+"|"+P+"|"+dev)}catch(e){dev=null}
+if(ok){g.style.display="none";return}
+document.body.classList.add("lock");
+if(!dev){document.getElementById("gm").textContent="تعذر حفظ البيانات. افتح الملف من متصفح الهاتف (كروم أو سفاري) وليس من معاينة واتساب.";return}
+document.getElementById("gd").textContent=dev.slice(0,4)+"-"+dev.slice(4);
+document.getElementById("gb").onclick=function(){var v=nz(document.getElementById("gc").value);
+if(v===h(SEC+"|"+P+"|"+dev)){try{localStorage.setItem(KA,v)}catch(e){}document.body.classList.remove("lock");g.style.display="none"}else document.getElementById("ge").textContent="الكود غير صحيح لهذا الجهاز."}
+})();
+</script>
+
 <script>
 /* ====== جدول الصفحات: مصحف المدينة (604 صفحة) ====== */
 const SD="الفاتحة 1|البقرة 2|آل عمران 50|النساء 77|المائدة 106|الأنعام 128|الأعراف 151|الأنفال 177|التوبة 187|يونس 208|هود 221|يوسف 235|الرعد 249|إبراهيم 255|الحجر 262|النحل 267|الإسراء 282|الكهف 293|مريم 305|طه 312|الأنبياء 322|الحج 332|المؤمنون 342|النور 350|الفرقان 359|الشعراء 367|النمل 377|القصص 385|العنكبوت 396|الروم 404|لقمان 411|السجدة 415|الأحزاب 418|سبأ 428|فاطر 434|يس 440|الصافات 446|ص 453|الزمر 458|غافر 467|فصلت 477|الشورى 483|الزخرف 489|الدخان 496|الجاثية 499|الأحقاف 502|محمد 507|الفتح 511|الحجرات 515|ق 518|الذاريات 520|الطور 523|النجم 526|القمر 528|الرحمن 531|الواقعة 534|الحديد 537|المجادلة 542|الحشر 545|الممتحنة 549|الصف 551|الجمعة 553|المنافقون 554|التغابن 556|الطلاق 558|التحريم 560|الملك 562|القلم 564|الحاقة 566|المعارج 568|نوح 570|الجن 572|المزمل 574|المدثر 575|القيامة 577|الإنسان 578|المرسلات 580|النبأ 582|النازعات 583|عبس 585|التكوير 586|الانفطار 587|المطففين 587|الانشقاق 589|البروج 590|الطارق 591|الأعلى 591|الغاشية 592|الفجر 593|البلد 594|الشمس 595|الليل 595|الضحى 596|الشرح 596|التين 597|العلق 597|القدر 598|البينة 598|الزلزلة 599|العاديات 599|القارعة 600|التكاثر 600|العصر 601|الهمزة 601|الفيل 601|قريش 602|الماعون 602|الكوثر 602|الكافرون 603|النصر 603|المسد 603|الإخلاص 604|الفلق 604|الناس 604";
