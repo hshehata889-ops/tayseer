@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مخطط مراجعة القرآن كاملاً</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap">
+<style>
+:root{--bg:#faf7f0;--fg:#1d2a24;--card:#fff;--ac:#1f6b4f;--mu:#6b7a72;--bd:#e2dccd;--bad:#b3392f;--ok:#e6f3ec;--late:#fbe9e7;--td:#fff6d6;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121a16;--fg:#e8efe9;--card:#1b2620;--ac:#5fcf9f;--mu:#9bb0a4;--bd:#2c3b33;--bad:#ff8d82;--ok:#1d3a2c;--late:#3d2321;--td:#3a3418;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121a16;--fg:#e8efe9;--card:#1b2620;--ac:#5fcf9f;--mu:#9bb0a4;--bd:#2c3b33;--bad:#ff8d82;--ok:#1d3a2c;--late:#3d2321;--td:#3a3418;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 Tajawal,system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:16px}
+h1{font-size:1.5rem;margin:.2em 0}h2{font-size:1.1rem;margin:0 0 10px;color:var(--ac)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px;margin:12px 0}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+label.f{display:flex;flex-direction:column;font-size:.85rem;color:var(--mu);gap:3px}
+input,select,textarea,button{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:7px}
+button{cursor:pointer;background:var(--ac);color:var(--bg);border:0;font-weight:700}
+.bar{height:12px;background:var(--bd);border-radius:8px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac)}
+.w{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:480px}
+th,td{border-bottom:1px solid var(--bd);padding:6px;text-align:right;vertical-align:middle}
+tr.rest td{background:var(--bd);color:var(--mu)}tr.late td{background:var(--late)}tr.ok td{background:var(--ok)}tr.today td{background:var(--td)}
+td input[type=checkbox]{width:20px;height:20px}td input.n{width:100%;min-width:90px;padding:3px}
+.nav{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-bottom:8px}
+.msg{padding:8px 10px;border-radius:8px;margin:6px 0;background:var(--ok)}.msg.w2{background:var(--late)}
+.m{display:flex;gap:8px;align-items:center;padding:4px 0;border-bottom:1px solid var(--bd)}
+textarea{width:100%;height:90px;direction:ltr;box-sizing:border-box}small{color:var(--mu)}
+</style>
+</head>
+<body>
+<main>
+<h1>مخطط مراجعة القرآن كاملاً</h1>
+<small>لمن أتمّ الحفظ. أداة تنظيم فقط، الترقيم على مصحف المدينة (604 صفحة).</small>
+
+<section class="card"><h2>١. بياناتك</h2>
+<div class="g">
+<label class="f">الاسم<input id="nm" data-k="name"></label>
+<label class="f">مدة مراجعة القرآن كاملاً<select id="wk" data-k="weeks"></select></label>
+<label class="f">نقطة البداية<select id="dr" data-k="dir"><option value="b">من أول القرآن (الفاتحة فالبقرة)</option><option value="j">من جزء عمّ والرجوع للخلف</option></select></label>
+<label class="f">سعتك للمراجعة يومياً (0 = بدون تنبيه)<input id="cp" type="number" min="0" max="100" data-k="cap"></label>
+<label class="f">يوم الراحة الأول<select id="r1" data-k="r1"></select></label>
+<label class="f">يوم الراحة الثاني (اختياري)<select id="r2" data-k="r2"><option value="-1">بدون</option></select></label>
+<label class="f">تاريخ البدء<input id="sd" type="date" data-k="start"></label>
+</div></section>
+
+<section class="card"><h2>٢. فحص الواقعية</h2><div id="info"></div></section>
+
+<section class="card"><h2>٣. جدولك</h2>
+<div class="nav"><button id="pv">السابق</button><b id="ml"></b><button id="tdb">اليوم</button><button id="nx">التالي</button></div>
+<div class="w"><table><thead><tr><th>اليوم</th><th>المراجعة</th><th>تم</th><th>ملاحظة</th></tr></thead><tbody id="tb"></tbody></table></div>
+</section>
+
+<section class="card"><h2>٤. ما لم تراجعه (متأخرات)</h2><small>علّم على اليوم هنا عند تعويضه.</small><div id="ms"></div></section>
+
+<section class="card"><h2>٥. النسخة الاحتياطية</h2>
+<small>يُحفظ عملك تلقائياً في متصفحك. لحمايته من أي عطل: انسخ الكود أدناه واحفظه في ملاحظاتك، ولاسترجاعه الصقه واضغط استرجاع.</small>
+<textarea id="bk" spellcheck="false"></textarea>
+<div class="nav"><button id="ex">إنشاء كود النسخة</button><button id="im">استرجاع من الكود</button></div><div id="bm"></div>
+</section>
+</main>
+<script>
+/* ====== جدول الصفحات: مصحف المدينة (604 صفحة) ====== */
+const SD="الفاتحة 1|البقرة 2|آل عمران 50|النساء 77|المائدة 106|الأنعام 128|الأعراف 151|الأنفال 177|التوبة 187|يونس 208|هود 221|يوسف 235|الرعد 249|إبراهيم 255|الحجر 262|النحل 267|الإسراء 282|الكهف 293|مريم 305|طه 312|الأنبياء 322|الحج 332|المؤمنون 342|النور 350|الفرقان 359|الشعراء 367|النمل 377|القصص 385|العنكبوت 396|الروم 404|لقمان 411|السجدة 415|الأحزاب 418|سبأ 428|فاطر 434|يس 440|الصافات 446|ص 453|الزمر 458|غافر 467|فصلت 477|الشورى 483|الزخرف 489|الدخان 496|الجاثية 499|الأحقاف 502|محمد 507|الفتح 511|الحجرات 515|ق 518|الذاريات 520|الطور 523|النجم 526|القمر 528|الرحمن 531|الواقعة 534|الحديد 537|المجادلة 542|الحشر 545|الممتحنة 549|الصف 551|الجمعة 553|المنافقون 554|التغابن 556|الطلاق 558|التحريم 560|الملك 562|القلم 564|الحاقة 566|المعارج 568|نوح 570|الجن 572|المزمل 574|المدثر 575|القيامة 577|الإنسان 578|المرسلات 580|النبأ 582|النازعات 583|عبس 585|التكوير 586|الانفطار 587|المطففين 587|الانشقاق 589|البروج 590|الطارق 591|الأعلى 591|الغاشية 592|الفجر 593|البلد 594|الشمس 595|الليل 595|الضحى 596|الشرح 596|التين 597|العلق 597|القدر 598|البينة 598|الزلزلة 599|العاديات 599|القارعة 600|التكاثر 600|العصر 601|الهمزة 601|الفيل 601|قريش 602|الماعون 602|الكوثر 602|الكافرون 603|النصر 603|المسد 603|الإخلاص 604|الفلق 604|الناس 604";
+const J=[1,22,42,62,82,102,121,142,162,182,201,222,242,262,282,302,322,342,362,382,402,422,442,462,482,502,522,542,562,582];
+const S=SD.split("|").map(x=>{const i=x.lastIndexOf(" ");return[x.slice(0,i),+x.slice(i+1)]});
+const $=id=>document.getElementById(id),KEY="khatm-review-v1";
+const iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const D=s=>{const[a,b,c]=s.split("-");return new Date(+a,b-1,+c)};
+let st={name:"",weeks:4,dir:"b",cap:0,r1:5,r2:-1,start:iso(new Date()),checks:{},notes:{},mi:null};
+try{const v=localStorage.getItem(KEY);if(v)Object.assign(st,JSON.parse(v))}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const jb=j=>j==29?604:J[j+1]-1;
+function sn(p){let m=0;for(const s of S)if(s[1]<=p)m=Math.max(m,s[1]);return S.find(s=>s[1]==m)[0]}
+function rng(a){if(!a.length)return"—";a=[...a].sort((x,y)=>x-y);const o=[];let s=a[0],e=s;
+ for(let i=1;i<=a.length;i++){if(a[i]==e+1)e=a[i];else{o.push((s==e?"ص "+s:"ص "+s+"–"+e)+" · "+sn(s));s=a[i];e=s}}return o.join("، ")}
+function order(){const o=[];if(st.dir=="b")for(let p=1;p<=604;p++)o.push(p);
+ else for(let j=29;j>=0;j--)for(let p=J[j];p<=jb(j);p++)o.push(p);return o}
+function build(){
+ const o=order(),r1=+st.r1,r2=+st.r2,s=D(st.start),end=new Date(s);end.setDate(end.getDate()+ +st.weeks*7);
+ const ds=[];for(let d=new Date(s);d<end;d.setDate(d.getDate()+1)){const g=d.getDay();ds.push({k:iso(d),d:new Date(d),rest:g==r1||g==r2})}
+ const W=ds.filter(x=>!x.rest).length;let i=0;
+ ds.forEach(x=>{if(!x.rest){x.rp=o.slice(Math.floor(i*604/W),Math.floor((i+1)*604/W));i++;x.ck=st.checks[x.k]||{}}});
+ return{ds,W,end}}
+const fd=d=>d.toLocaleDateString("ar-EG",{weekday:"short",day:"numeric",month:"numeric"});
+function render(){
+ const{ds,W}=build(),today=iso(new Date()),req=Math.ceil(604/W);
+ let done=0;ds.forEach(x=>{if(!x.rest&&x.ck.r)done+=x.rp.length});
+ const pct=Math.round(done/6.04);
+ let h=`<div>${st.name?"<b>"+st.name+"</b>، ":""}ستراجع القرآن كاملاً (604 صفحة) في <b>${W}</b> يوم عمل، بمعدل نحو <b>${req}</b> صفحة يومياً.</div>`;
+ if(+st.cap>0&&req>+st.cap)h+=`<div class="msg w2">المطلوب (${req} صفحة يومياً) أكثر من سعتك (${st.cap}). أطل المدة أو غيّر السعة.</div>`;
+ else h+=`<div class="msg">الخطة ضمن سعتك.</div>`;
+ h+=`<div style="margin-top:8px">ما راجعته حتى الآن: <b>${done}</b> / 604 (${pct}%)</div><div class="bar"><i style="width:${pct}%"></i></div>`;
+ $("info").innerHTML=h;
+ const mk=d=>d.getFullYear()*12+d.getMonth(),ms=[...new Set(ds.map(x=>mk(x.d)))];
+ if(st.mi==null){const i=ms.indexOf(mk(new Date()));st.mi=i<0?0:i}
+ st.mi=Math.min(Math.max(st.mi,0),ms.length-1);
+ const cur=ds.filter(x=>mk(x.d)==ms[st.mi]);
+ $("ml").textContent=cur[0].d.toLocaleDateString("ar-EG",{month:"long",year:"numeric"});
+ $("tb").innerHTML=cur.map(x=>{
+  if(x.rest)return`<tr class="rest"><td>${fd(x.d)}</td><td colspan="3">يوم راحة</td></tr>`;
+  const c=x.ck,cl=c.r?"ok":(x.k<today?"late":(x.k==today?"today":""));
+  return`<tr class="${cl}"><td>${fd(x.d)}</td><td>${rng(x.rp)}</td><td><input type="checkbox" data-d="${x.k}" ${c.r?"checked":""}></td><td><input class="n" data-n="${x.k}" value="${(st.notes[x.k]||"").replace(/"/g,"&quot;")}"></td></tr>`}).join("");
+ const miss=ds.filter(x=>!x.rest&&x.k<today&&!x.ck.r);
+ $("ms").innerHTML=miss.length?`<div class="msg w2">عندك ${miss.length} يوم لم تُراجَع.</div>`+miss.slice(-30).map(x=>`<div class="m"><input type="checkbox" data-d="${x.k}"><span>${fd(x.d)}: ${rng(x.rp)}</span></div>`).join(""):"لا توجد متأخرات. استمر.";
+ save()}
+const dn=["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
+[5,6,0,1,2,3,4].forEach(g=>{$("r1").add(new Option(dn[g],g));$("r2").add(new Option(dn[g],g))});
+[[1,"أسبوع"],[2,"أسبوعان"],[3,"3 أسابيع"],[4,"شهر"],[8,"شهران"],[13,"3 أشهر"],[26,"6 أشهر"],[52,"سنة"]].forEach(x=>$("wk").add(new Option(x[1],x[0])));
+document.querySelectorAll("[data-k]").forEach(e=>{e.value=st[e.dataset.k];e.addEventListener("input",()=>{st[e.dataset.k]=e.value;st.mi=null;render()})});
+const tick=e=>{const t=e.target;if(t.dataset.d){st.checks[t.dataset.d]={r:t.checked};render()}};
+$("tb").onchange=tick;$("ms").onchange=tick;
+$("tb").oninput=e=>{if(e.target.dataset.n){st.notes[e.target.dataset.n]=e.target.value;save()}};
+$("pv").onclick=()=>{st.mi--;render()};$("nx").onclick=()=>{st.mi++;render()};$("tdb").onclick=()=>{st.mi=null;render()};
+$("ex").onclick=()=>{$("bk").value=JSON.stringify(st);$("bk").select();$("bm").textContent="انسخ الكود واحفظه."};
+$("im").onclick=()=>{try{const o=JSON.parse($("bk").value);if(!o.checks||!o.weeks)throw 0;Object.assign(st,o);st.mi=null;document.querySelectorAll("[data-k]").forEach(e=>e.value=st[e.dataset.k]);render();$("bm").textContent="تم الاسترجاع."}catch(e){$("bm").textContent="الكود غير صالح."}};
+render();
+</script>
+</body>
+</html>
