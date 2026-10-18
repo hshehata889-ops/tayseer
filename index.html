@@ -189,15 +189,9 @@ var ad=(new URLSearchParams(location.search).get("ad")||"").replace(/[^\w\u0600-
 tag=ad?"من الإعلان "+ad:"من الموقع",
 txt="السلام عليكم، أريد الحصول على الجدول الذكي لحفظ ومراجعة القرآن ("+(on?"عرض ":"")+price+" جنيه) - "+tag,
 url="https://wa.me/"+CFG.phone+"?text="+encodeURIComponent(txt);
-document.querySelectorAll("a.wa").forEach(function(a){a.href=url;a.onclick=function(){try{if(window.fbq)fbq("track","Contact")}catch(x){}}});
+document.querySelectorAll("a.wa").forEach(function(a){a.href=url;a.onclick=function(){try{if(window.fbq)fbq("track","Contact");fbq("track","InitiateCheckout",{value:150,currency:"EGP"})
+}catch(x){}}});
 })();
-</script>
-<script>
-document.querySelectorAll('a[href*="wa.me"]').forEach(function(a){
-  a.addEventListener('click', function(){
-    fbq('track','InitiateCheckout',{value:150,currency:'EGP'});
-  });
-});
 </script>
 </body>
 </html>
